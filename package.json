@@ -10,7 +10,12 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/eslint-parser": "^7.14.7",
+        "@maelstrom-cms/toolkit": "^1.0.46",
         "axios": "^0.21",
+        "babel-eslint": "^8.2.6",
+        "eslint": "^4.19.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"

@@ -15,3 +15,16 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+mix.js('resources/js/maelstrom.js', 'public/js').react();
+
+mix.webpackConfig({
+    module: {
+        rules: [require('@maelstrom-cms/toolkit/js/support/DontIgnoreMaelstrom')()],
+    },
+});
+
+mix.postCss('resources/sass/maelstrom.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+])
