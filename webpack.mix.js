@@ -12,19 +12,14 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .react()
     .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ])
+    .webpackConfig(require('./webpack.config'));
 
-mix.js('resources/js/maelstrom.js', 'public/js').react();
-
-mix.webpackConfig({
-    module: {
-        rules: [require('@maelstrom-cms/toolkit/js/support/DontIgnoreMaelstrom')()],
-    },
-});
-
-mix.postCss('resources/sass/maelstrom.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-])
+if (mix.inProduction()) {
+    mix.version();
+}
