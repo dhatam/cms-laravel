@@ -28,4 +28,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::prefix('/admin')->middleware('auth')->group(function () {
+    Route::resource('pages', 'Admin\PageController');
+});
+
 require __DIR__.'/auth.php';
